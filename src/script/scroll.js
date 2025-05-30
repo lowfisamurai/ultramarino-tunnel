@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const heroBanner = document.getElementById('scroll_lock_hero');
-  const scrollThreshold = 5340.5;
+  const scrollThreshold = 10000;
   const arches = document.querySelectorAll('svg[class^="arch"]');
   const baseSizes = Array.from(arches).map((svg) => {
     const styles = window.getComputedStyle(svg);
@@ -26,42 +26,54 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
 
-const sectionTop = heroBanner.offsetTop;
-const sectionHeight = heroBanner.offsetHeight;
-const scrollY = window.scrollY;
-const maxScroll = Math.max(1, sectionHeight);
+    const sectionTop = heroBanner.offsetTop;
+    const sectionHeight = heroBanner.offsetHeight;
+    const scrollY = window.scrollY;
+    const maxScroll = Math.max(1, sectionHeight);
 
-// Base scroll scaling speed for arches and lightTunnel
-const baseSpeed = 0.5;
+    // Base scroll scaling speed for arches and lightTunnel
+    const baseSpeed = 0.5;
 
-// Light tunnel update using same proportional logic
-if (lightTunnel) {
-  const percentLight = Math.min(1, scrollY * baseSpeed / maxScroll); // unified proportion
+    // Calculate the maximum size increase across all arches
+    let maxSizeIncrease = 0;
+    arches.forEach((svg, i) => {
+      const speed = (i === arches.length - 1) ? baseSpeed * 10 : baseSpeed;
+      const newSize = scrollY * speed;
+      maxSizeIncrease = Math.max(maxSizeIncrease, newSize);
+    });
 
-  // Inverted opacity: starts at 1, ends at 0
-  const opacity = (1 - percentLight) * 0.9;
-  const finalOpacity = Math.max(Math.min(opacity, 1), 0);
+    // Light tunnel update using the same scaling logic as arches
+    if (lightTunnel) {
+      // Calculate opacity based on the maximum arch size increase
+      const maxArchWidth = baseSizes[0].width + maxSizeIncrease;
+      const initialArchWidth = baseSizes[0].width;
+      const scaleProgress = (maxArchWidth - initialArchWidth) / initialArchWidth;
+      
+      // Invert the scale progress for opacity (1 to 0)
+      const opacity = Math.max(0, 1 - (scaleProgress * 0.05));
+      
+      // Calculate radius based on the same scaling
+      const baseRadius = 20;
+      const maxRadius = 80;
+      const radius = baseRadius + (scaleProgress * (maxRadius - baseRadius));
 
-  const radius = 20 + percentLight * 10;
-  lightTunnel.style.background = `radial-gradient(
-    circle at 50% 50%,
-    rgba(255,255,255,${finalOpacity}) 0%,
-    rgba(255,255,255,${finalOpacity}) ${radius}%, #fff 100%)`;
+      lightTunnel.style.background = `radial-gradient(
+        circle at 50% 50%,
+        rgba(0,0,0,${opacity}) 0%,
+        rgba(0,0,0,${opacity}) ${radius}%, #000 100%)`;
 
-  lightTunnel.style.opacity = finalOpacity;
-}
+      lightTunnel.style.opacity = opacity;
+    }
 
-// Responsive arches
-arches.forEach((svg, i) => {
-  const base = baseSizes[i];
+    // Responsive arches
+    arches.forEach((svg, i) => {
+      const base = baseSizes[i];
+      const speed = (i === arches.length - 1) ? baseSpeed * 10 : baseSpeed;
+      const newSize = scrollY * speed;
 
-  // Faster for last SVG
-  const speed = (i === arches.length - 1) ? baseSpeed * 10 : baseSpeed;
-  const newSize = scrollY * speed;
-
-  svg.style.width = `${base.width + newSize}px`;
-  svg.style.height = `${base.height + newSize}px`;
-});
+      svg.style.width = `${base.width + newSize}px`;
+      svg.style.height = `${base.height + newSize}px`;
+    });
 
     // Responsive first_pet
     if (firstPet && firstPetBase) {
