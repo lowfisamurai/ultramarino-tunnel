@@ -2,51 +2,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./src/styles/styles.css">
     <script src="./src/script/scroll.js"></script>
-    <script src="./src/script/scroll.js"></script>
 </head>
 
 <body>
-    <section class="landing_section">
-        <div class="galhos_frente">
-            <img class="galho_direita" src="./src/assets/galho_direita.jpg" alt="Galho 1">
-            <img class="galho_esquerda" src="./src/assets/galho_esquerda.jpg" alt="Galho 2">
-        </div>
-        <div class="tunnel">
-            <svg class="arch size_1_arch" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#B0C4DE" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_2_arch" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#CCCCFF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_3_arch" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#B3B3FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_4_arch" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#9999FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_5_arch" data-name="Layer 5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#8080FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_6_arch" data-name="Layer 6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#6666FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_7_arch" data-name="Layer 7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#4D4DFF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_8_arch" data-name="Layer 8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#3333FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_9_arch" data-name="Layer 9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#1A1AFF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-            <svg class="arch size_10_arch" data-name="Layer 10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
-                <path fill="#0000FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
-            </svg>
-        </div>
-        <div class="light_tunnel">
-        </div>
-        <div class="pet first_pet">
-            <img class="first_pet_img" src="./src/assets/jumping_penguin.gif" alt="First Pet">
+    <section class="hero_banner">
+        <div id="scroll_lock_hero" class="fixed">
+            <div class="galhos_frente">
+                <img class="galho_direita" src="./src/assets/galho_direita.jpg" alt="Galho 1">
+                <img class="galho_esquerda" src="./src/assets/galho_esquerda.jpg" alt="Galho 2">
+            </div>
+            <div class="tunnel light_tunnel">
+                <svg class="arch size_1_arch" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#B0C4DE" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_2_arch" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#CCCCFF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_3_arch" data-name="Layer 3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#B3B3FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_4_arch" data-name="Layer 4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#9999FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_5_arch" data-name="Layer 5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#8080FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_6_arch" data-name="Layer 6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#6666FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_7_arch" data-name="Layer 7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#4D4DFF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_8_arch" data-name="Layer 8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#3333FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_9_arch" data-name="Layer 9" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#1A1AFF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_10_arch" data-name="Layer 10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+                    <path fill="#0000FF" d="M0,0v1080h695.32v-525.75c-.25-4.72-.38-9.47-.38-14.25,0-146.39,118.68-265.07,265.07-265.07s265.07,118.68,265.07,265.07v540h694.93V0H0Z" />
+                </svg>
+                <svg class="arch size_11_arch" data-name="Layer 11" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1920 1080">
+                    <path style="fill: #3953a3;" d="M863,485v110h70.26v-53.55c-.03-.48-.04-.96-.04-1.45,0-14.91,11.99-27,26.78-27s26.78,12.09,26.78,27v55h70.22v-110h-194Z"/>
+                    <polygon style="fill: #8e99b2;" points="863 595 0 1080 1920 1080 1057 595 863 595"/>
+                </svg>
+            </div>
+            <div class="pet first_pet">
+                <img class="first_pet_img" src="./src/assets/jumping_penguin.gif" alt="First Pet">
+            </div>
+            <div class="pyramid">
+                <img src="src/assets/pyramid.png" alt=""/>
+            </div>
         </div>
     </section>
     <section class="content_section">

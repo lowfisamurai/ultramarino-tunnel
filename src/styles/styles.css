@@ -1,21 +1,40 @@
+html, body{
+  overflow-x: hidden;
+  margin: 0;
+}
+.hero_banner{
+  height: 5340.5px;
+}
+#scroll_lock_hero{
+  height: 100%;
+  width: 100%;
+  position: relative;
+  top: 0;
+}
 .light_tunnel {
-  position: fixed;
+  opacity: 1;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 1920px;
-  height: 1080px;
+  bottom: 0;
+  right:0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
-  z-index: 101; /* Above arches and branches */
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.8) 60%,
-    #fff 100%
-  );
-  opacity: 0;
+  z-index: 12;
+  background: radial-gradient(circle at 50% 50%,rgba(255, 255, 255, 0) 0%,rgba(255, 255, 255, 0.8) 80%,#fff 100%);
   transition: opacity 0.2s linear, background 0.2s linear;
 }
-
+.pyramid{
+  position: absolute;
+  width: 100vw;
+  height:100vh;
+}
+.pyramid img{
+  width:100%;
+  height:100%;
+}
 .galhos_frente {
   position: fixed;
   top: 0;
@@ -46,7 +65,6 @@
   will-change: transform;
   pointer-events: none;
 }
-
 /* Animação de saída dos galhos simulando scroll (exemplo para testes) */
 body.scrolled .galho_direita {
   transform: translateX(120vw);
@@ -54,17 +72,16 @@ body.scrolled .galho_direita {
 body.scrolled .galho_esquerda {
   transform: translateX(-120vw);
 }
-
-body {
-  background-color: #041e42;
-  height: 1000vh;
+.fixed{
+  position: fixed!important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
-.tunnel {
-  position: fixed;
-  width: 100%;
-  height: 100%;
+.d-none{
+  display:none;
 }
-
 .arch {
   position: absolute;
   top: 50%;
@@ -72,55 +89,48 @@ body {
   transform: translate(-50%, -50%);
   height: 1080px;
 }
-
 .size_1_arch {
   width: 1920px;
+  z-index: 11;
+}
+.size_2_arch {
+  width: 1728px;
   z-index: 10;
 }
-
-.size_2_arch {
-  width: 1579px;
-  height: 1080px;
+.size_3_arch {
+  width: 1536px;
   z-index: 9;
 }
-
-.size_3_arch {
-  width: 1277px;
+.size_4_arch {
+  width: 1344px;
   z-index: 8;
 }
-
-.size_4_arch {
-  width: 1045px;
+.size_5_arch {
+  width: 1152px;
   z-index: 7;
 }
-
-.size_5_arch {
-  width: 901px;
+.size_6_arch {
+  width: 960px;
   z-index: 6;
 }
-
-.size_6_arch {
-  width: 779px;
+.size_7_arch {
+  width: 768px;
   z-index: 5;
 }
-
-.size_7_arch {
-  width: 668px;
+.size_8_arch {
+  width: 576px;
   z-index: 4;
 }
-
-.size_8_arch {
-  width: 486px;
+.size_9_arch {
+  width: 384px;
   z-index: 3;
 }
-
-.size_9_arch {
-  width: 315px;
+.size_10_arch {
+  width: 192px;
   z-index: 2;
 }
-
-.size_10_arch {
-  width: 194px;
+.size_11_arch {
+  width: 1920px;
   z-index: 1;
 }
 
@@ -155,7 +165,8 @@ body {
 }
 
 .content_section {
-  height: 100vh;
+  height: 1000vh;
+  background: rgb(1, 130, 1);
 }
 
 .content {
