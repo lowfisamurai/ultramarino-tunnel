@@ -13,7 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const galhoEsquerda = document.querySelector(".galho_esquerda");
   const lightTunnel = document.querySelector(".light_tunnel");
   const firstPet = document.querySelector(".first_pet");
+  const pyramid = document.querySelector(".pyramid");
   let firstPetBase = null;
+  let pyramidBase = null;
 
   window.addEventListener("scroll", () => {
     if (heroBanner) {
@@ -82,17 +84,46 @@ document.addEventListener("DOMContentLoaded", () => {
       firstPet.style.height = `${firstPetBase.height + newSize}px`;
     }
 
-    // Animated branches
-    const percentBranch = Math.min(1, scrollY / (maxScroll * 0.5));
-    if (galhoDireita)
-      galhoDireita.style.transform = `translateX(${percentBranch * 120}vw)`;
-    if (galhoEsquerda)
-      galhoEsquerda.style.transform = `translateX(${-percentBranch * 120}vw)`;
+    // Animated branches using the same scaling logic as firstPet
+    if (galhoDireita || galhoEsquerda) {
+      const newSize = scrollY * 0.2; // Same scaling factor as firstPet
+      const translateX = newSize * 2; // Adjust multiplier to control movement distance
+      
+      if (galhoDireita) {
+        galhoDireita.style.transform = `translateX(${translateX}px)`;
+      }
+      if (galhoEsquerda) {
+        galhoEsquerda.style.transform = `translateX(${-translateX}px)`;
+      }
+    }
+
+    // Pyramid zoom animation
+    if (pyramid && pyramidBase) {
+      const newSize = scrollY * .4;
+      const scale = 1 + (newSize / 1000);
+      
+      // Calculate opacity based on scroll progress
+      const maxScroll = 10000; // Same as scrollThreshold
+      const fadeStart = maxScroll * 0.7; // Start fading at 70% of max scroll
+      const fadeProgress = Math.max(0, Math.min(1, (scrollY - fadeStart) / (maxScroll - fadeStart)));
+      const opacity = 1 - fadeProgress;
+      
+      pyramid.style.transform = `scale(${scale})`;
+      pyramid.style.opacity = opacity;
+    }
   });
 
   if (firstPet) {
     const styles = window.getComputedStyle(firstPet);
     firstPetBase = {
+      width: parseFloat(styles.width),
+      height: parseFloat(styles.height),
+    };
+  }
+
+  if (pyramid) {
+    const styles = window.getComputedStyle(pyramid);
+    pyramidBase = {
       width: parseFloat(styles.width),
       height: parseFloat(styles.height),
     };
