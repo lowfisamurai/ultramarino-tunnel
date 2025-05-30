@@ -153,3 +153,21 @@ body {
   max-width: 12vw;
   pointer-events: none;
 }
+
+.content_section {
+  height: 100vh;
+}
+
+.content {
+  p {
+    color: #fff;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 0 20px;
+  }
+  h2 {
+    color: #fff;
+    font-size: 2rem;
+    margin: 20px 0;
+  }
+}
