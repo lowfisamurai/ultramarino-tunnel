@@ -4,7 +4,7 @@ html, body{
   background: #000;
 }
 .hero_banner{
-  height: 10000px;
+  height: 12000px;
 }
 #scroll_lock_hero{
   height: 100%;
@@ -29,14 +29,47 @@ html, body{
   transition: opacity 0.2s linear, background 0.2s linear;
 }
 .pyramid{
+  display:flex;
+  justify-content: center;
   position: absolute;
   width: 100vw;
-  height:100vh;
+  height:50vh;
+  bottom: 0;
   transition: opacity 0.3s ease;
 }
+.pyramid_background{
+  display:flex;
+  justify-content: center;
+  position: absolute;
+    width: 100%;
+    height: auto;
+  transition: opacity 0.3s ease;
+  background:#fff1d7
+}
 .pyramid img{
-  width:100%;
   height:100%;
+}
+.pyramid_background img{
+  height:100%;
+}
+.pyramid, .lazuli {
+  transition: transform 0.2s linear;
+  will-change: transform;
+}
+
+.lazuli {
+  opacity: 0;
+  transition: opacity 1s ease, transform 0.2s linear;
+  transform-origin: center center;
+}
+
+.lazuli img {
+    position: absolute;
+    left: -3rem;
+    right: 0;
+    top: 9rem;
+    margin: auto;
+    width: 10rem;
 }
 .galhos_frente {
   position: fixed;
@@ -158,28 +191,33 @@ body.scrolled .galho_esquerda {
   left: auto;
   transform: none;
 }
-
 .first_pet_img {
   max-height: 18vh;
   max-width: 12vw;
   pointer-events: none;
 }
-
 .content_section {
-  height: 1000vh;
-  background: #000;
-  display: flex;
-  justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 5vw;
+    display: flex;
+    justify-content: left;
+    overflow: hidden; /* prevent scrolling the outer container */
 }
 
-.content {
-  p {
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 1.5;
-  }
-  h2 {
-    color: #fff;
-    font-size: 2rem;
-  }
+.content_inner {
+    will-change: transform;
+}
+
+.content p{
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+.content  h2 {
+  color: #fff;
+  font-size: 2rem;
 }

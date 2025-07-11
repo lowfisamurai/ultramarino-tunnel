@@ -14,20 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightTunnel = document.querySelector(".light_tunnel");
   const firstPet = document.querySelector(".first_pet");
   const pyramid = document.querySelector(".pyramid");
+  const lazuli = document.querySelector('.lazuli');
+  const bgPyramid = document.querySelector(".pyramid_background");
   let firstPetBase = null;
   let pyramidBase = null;
 
   window.addEventListener("scroll", () => {
-    if (heroBanner) {
-      if (window.scrollY < scrollThreshold) {
-        heroBanner.classList.add('fixed');
-        heroBanner.classList.remove('d-none');
-      } else {
-        heroBanner.classList.remove('fixed');
-        heroBanner.classList.add('d-none');
-      }
-    }
-
     const sectionTop = heroBanner.offsetTop;
     const sectionHeight = heroBanner.offsetHeight;
     const scrollY = window.scrollY;
@@ -98,18 +90,51 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Pyramid zoom animation
-    if (pyramid && pyramidBase) {
-      const newSize = scrollY * .4;
-      const scale = 1 + (newSize / 1000);
-      
-      // Calculate opacity based on scroll progress
-      const maxScroll = 10000; // Same as scrollThreshold
-      const fadeStart = maxScroll * 0.7; // Start fading at 70% of max scroll
-      const fadeProgress = Math.max(0, Math.min(1, (scrollY - fadeStart) / (maxScroll - fadeStart)));
-      const opacity = 1 - fadeProgress;
-      
+    if (pyramid && pyramidBase && bgPyramid && lazuli) {
+      const newSize = scrollY * 0.3;
+      let scale = 1 + (newSize / 1000);
+      if (scale > 3) scale = 3; // Stop scaling at 300%
+
       pyramid.style.transform = `scale(${scale})`;
-      pyramid.style.opacity = opacity;
+
+      // Fade bgPyramid when pyramid scale reaches 3
+      const fadeStart = 6667;
+      const fadeEnd = 10000;
+
+      let opacity = 1;
+      if (scrollY > fadeStart) {
+        opacity = 1 - ((scrollY - fadeStart) / (fadeEnd - fadeStart));
+        opacity = Math.max(opacity, 0);
+      }
+      bgPyramid.style.opacity = opacity;
+
+      // Lazuli fade in when pyramid stops
+      if (scale >= 3) {
+        lazuli.style.opacity = 1;
+      } else {
+        lazuli.style.opacity = 0;
+      }
+
+      // After bgPyramid opacity is 0, animate pyramid down and lazuli to center with scale up
+      if (scrollY > fadeEnd) {
+        const postFadeStart = fadeEnd;
+        const postFadeEnd = 13000;
+        const progress = Math.min((scrollY - postFadeStart) / (postFadeEnd - postFadeStart), 1);
+
+        // Pyramid: move down off-screen
+        const maxTranslateY = window.innerHeight * 1.5; // adjust if needed
+        const translateY = progress * maxTranslateY;
+        pyramid.style.transform = `scale(3) translateY(${translateY}px)`;
+
+        // Lazuli: move to center and scale up
+        const lazuliScale = 1 + progress * 0.8; // scales up to 1.5x
+        const lazuliTranslateY = -progress * 50; // adjust as needed for centering effect
+        lazuli.style.transform = `translateY(${lazuliTranslateY}%) scale(${lazuliScale})`;
+      } else {
+        // Reset position if before fadeEnd
+        pyramid.style.transform = `scale(${scale})`;
+        lazuli.style.transform = `translateY(0%) scale(1)`;
+      }
     }
   });
 
